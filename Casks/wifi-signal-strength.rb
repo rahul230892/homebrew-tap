@@ -8,4 +8,9 @@ cask "wifi-signal-strength" do
   homepage "https://github.com/rahul230892/wifiSignalStrength"
 
   app "WiFiSignalStrength.app"
+
+  caveats <<~EOS
+    If the app doesn't open, run:
+      xattr -cr /Applications/WiFiSignalStrength.app
+  EOS
 end
