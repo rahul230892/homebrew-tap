@@ -1,11 +1,11 @@
 cask "portmonitor" do
-  version "1.0.0"
-  sha256 :no_check
+  version "1.1.0"
+  sha256 "4806ac191548f02bf388d83f6a844e88556417975fdffb2583e8d454e396c67f"
 
-  url "file:///Users/rahul/Documents/Applications/PortMonitor/PortMonitor.zip"
+  url "https://github.com/rahul230892/PortMonitor/releases/download/v#{version}/PortMonitor.zip"
   name "PortMonitor"
   desc "macOS Port Monitor"
-  homepage "https://localhost"
+  homepage "https://github.com/rahul230892/PortMonitor"
 
   app "PortMonitor.app"
 
