@@ -1,6 +1,6 @@
 cask "netspeed" do
-  version "1.0.0"
-  sha256 "146213711cde7d3d8aa5f6799f7c283713e22b0a7ff278d473f577eb5fa5073a"
+  version "1.1.0"
+  sha256 "ca12987bcda666c09ff4f6982eaf4748d866701acbfc13e29c1871bced53a049"
 
   url "https://github.com/rahul230892/macSpeed/releases/download/v#{version}/NetSpeed.zip"
   name "NetSpeed"
@@ -8,6 +8,8 @@ cask "netspeed" do
   homepage "https://github.com/rahul230892/macSpeed"
 
   app "NetSpeed.app"
+
+  uninstall quit: "com.netspeed.app"
 
   postflight do
     system_command "xattr",
