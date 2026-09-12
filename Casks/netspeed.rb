@@ -1,24 +1,27 @@
 cask "netspeed" do
-  version "1.1.0"
-  sha256 "ca12987bcda666c09ff4f6982eaf4748d866701acbfc13e29c1871bced53a049"
+  version "1.2.0"
+  sha256 "2ff94078ea9aafc9417de1cabe0cab8a541fc6ed584e460c013797aa5badf67b"
 
   url "https://github.com/rahul230892/macSpeed/releases/download/v#{version}/NetSpeed.zip"
   name "NetSpeed"
-  desc "macOS Network Speed Monitor"
+  desc "Live network speed monitor for the menu bar"
   homepage "https://github.com/rahul230892/macSpeed"
+
+  auto_updates true
+  depends_on macos: :sonoma
 
   app "NetSpeed.app"
 
-  uninstall quit: "com.netspeed.app"
-
   postflight do
-    system_command "xattr",
-                   args: ["-cr", "#{appdir}/NetSpeed.app"],
-                   sudo: false
+    system_command "/usr/bin/xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/NetSpeed.app"]
   end
 
-  caveats <<~EOS
-    If you get a "damaged" or "cannot be opened" error, run:
-      xattr -cr /Applications/NetSpeed.app
-  EOS
+  uninstall quit: "com.rahul.NetSpeed"
+
+  zap trash: [
+    "~/Library/Caches/com.rahul.NetSpeed",
+    "~/Library/Preferences/com.rahul.NetSpeed.plist",
+    "~/Library/Saved Application State/com.rahul.NetSpeed.savedState",
+  ]
 end
