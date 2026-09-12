@@ -12,9 +12,9 @@ cask "netspeed" do
 
   app "NetSpeed.app"
 
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/NetSpeed.app"]
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args: ["-dr", "com.apple.quarantine", "{{appdir}}/NetSpeed.app"]
   end
 
   uninstall quit: "com.rahul.NetSpeed"
